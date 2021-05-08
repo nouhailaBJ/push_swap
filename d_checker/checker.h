@@ -6,7 +6,7 @@
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:05:52 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/04/28 16:32:21 by nbjaghou         ###   ########.fr       */
+/*   Updated: 2021/05/06 17:25:47 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	dubplicate_numbers(t_checker *checker);
 void	ft_free(t_stack *stack);
 void	free_all(t_checker *checker);
 int		ft_push_atoi(t_checker *checker, const char *str);
-void	add_first(t_stack **stack, int num);
 void	ft_push(t_stack **s1, t_stack **s2);
 void	del_last(t_stack **stack);
 void	ft_reverse_rotate(t_stack **stack);

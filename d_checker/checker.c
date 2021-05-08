@@ -6,7 +6,7 @@
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:05:45 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/04/28 17:00:29 by nbjaghou         ###   ########.fr       */
+/*   Updated: 2021/05/07 17:13:38 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	ft_checker(t_checker *checker)
 	dubplicate_numbers(checker);
 	get_cmd(checker);
 	checker_execute(checker);
+	free_all(checker);
 }
 
 int 	main(int argc, char **argv)

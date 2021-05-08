@@ -6,7 +6,7 @@
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 16:54:05 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/04/26 17:00:11 by nbjaghou         ###   ########.fr       */
+/*   Updated: 2021/05/06 17:21:51 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,13 @@ void	ft_rotate(t_stack **stack)
 	if (*stack)
 	{
 		tmp = *stack;
-		first_elm->num = tmp->num;
+		free(tmp);
+		first_elm->num = (*stack)->num;
 		first_elm->next = NULL;
-		tmp = tmp->next;
+		tmp = (*stack)->next;
 		ft_lstadd_back2(&tmp, first_elm);
 		*stack = tmp;
 	}
+	else
+		free(first_elm);
 }

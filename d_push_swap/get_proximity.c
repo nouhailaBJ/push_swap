@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   get_proximity.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 16:54:45 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/05/06 17:20:33 by nbjaghou         ###   ########.fr       */
+/*   Created: 2021/05/04 15:52:14 by nbjaghou          #+#    #+#             */
+/*   Updated: 2021/05/04 15:53:12 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-void	ft_push(t_stack **dest, t_stack **src)
+int	get_proximity(float index)
 {
-	t_stack	*tmp;
+	int	m;
 
-	if (*src)
-	{
-		tmp = *src;
-		*src = (*src)->next;
-		tmp->next = *dest;
-		*dest = tmp;
-	}
+	m = (int) index;
+	if ((m - index) >= 0.5)
+		return (m + 1);
+	else
+		return (m);
 }

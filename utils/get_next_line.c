@@ -6,7 +6,7 @@
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/01 22:20:57 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/04/28 16:48:50 by nbjaghou         ###   ########.fr       */
+/*   Updated: 2021/05/04 16:27:43 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,29 @@ int	free_return(char *buf, int b)
 	return (b);
 }
 
-int	ft_read_line(int fd, char *buf, char **line)
+int	norm_get_next(char **line, char **buf, int fd)
+{
+	*line = ft_strdup("");
+	*buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf && check_error(fd, line) == -1)
+		return (-1);
+	return (1);
+}
+
+int	get_next_line(int fd, char **line)
 {
 	static char	*save;
+	char		*buf;
 	char		*str;
 	int			ret;
 
+	if (norm_get_next(line, &buf, fd) == -1)
+		return (-1);
 	if (check_save(&save, line) == 1)
 		return (free_return(buf, 1));
 	ret = read(fd, buf, BUFFER_SIZE);
 	while (ret)
 	{
-		ret = read(fd, buf, BUFFER_SIZE);
 		buf[ret] = '\0';
 		str = ft_strchr(buf, '\n');
 		if (str)
@@ -77,17 +88,7 @@ int	ft_read_line(int fd, char *buf, char **line)
 			return (free_return(buf, 1));
 		}
 		*line = ft_strjoin(*line, buf);
+		ret = read(fd, buf, BUFFER_SIZE);
 	}
 	return (free_return(buf, 0));
-}
-
-int	get_next_line(int fd, char **line)
-{
-	char	*buf;
-
-	*line = ft_strdup("");
-	if (check_error(fd, line) == -1)
-		return (-1);
-	buf = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	return (ft_read_line(fd, buf, line));
 }

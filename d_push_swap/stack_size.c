@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   stack_size.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nbjaghou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 16:54:45 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/05/06 17:20:33 by nbjaghou         ###   ########.fr       */
+/*   Created: 2021/05/04 16:00:32 by nbjaghou          #+#    #+#             */
+/*   Updated: 2021/05/04 16:00:36 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-void	ft_push(t_stack **dest, t_stack **src)
+int	stack_size(t_stack *a)
 {
-	t_stack	*tmp;
+	int	count;
 
-	if (*src)
+	count = 0;
+	while (a)
 	{
-		tmp = *src;
-		*src = (*src)->next;
-		tmp->next = *dest;
-		*dest = tmp;
+		count++;
+		a = a->next;
 	}
+	return (count);
 }

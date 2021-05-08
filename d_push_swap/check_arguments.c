@@ -6,11 +6,11 @@
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:31:16 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/05/07 17:14:20 by nbjaghou         ###   ########.fr       */
+/*   Updated: 2021/05/07 17:22:05 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 int	ft_isalpha(int c)
 {

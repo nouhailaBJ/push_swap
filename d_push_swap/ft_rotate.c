@@ -1,54 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
+/*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 16:54:11 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/05/06 17:25:37 by nbjaghou         ###   ########.fr       */
+/*   Created: 2021/04/26 16:54:05 by nbjaghou          #+#    #+#             */
+/*   Updated: 2021/05/05 15:13:32 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-void	del_last(t_stack **stack)
+void	ft_lstadd_back2(t_stack **alst, t_stack *new)
 {
-	t_stack	*tmp;
-	t_stack	*new;
+	t_stack	*head;
 
-	if (stack)
+	head = *alst;
+	if (*alst)
 	{
-		tmp = *stack;
-		new = NULL;
-		while (tmp->next)
+		while (head->next)
 		{
-			new = tmp;
-			tmp = tmp->next;
+			head = head->next;
 		}
-		new->next = NULL;
-	}
-}
-
-void	ft_reverse_rotate(t_stack **stack)
-{
-	t_stack	*tmp;
-	t_stack	*new;
-
-	new = (t_stack *)malloc(sizeof(t_stack));
-	if (new != NULL && stack && *stack != NULL)
-	{
-		tmp = *stack;
-		while (tmp->next)
-		{
-			tmp = tmp->next;
-		}
-		new->num = tmp->num;
-		new->next = *stack;
-		*stack = new;
-		free(tmp);
-		del_last(stack);
+		head->next = new;
 	}
 	else
-		free(new);
+		*(alst) = new;
+}
+
+void	ft_rotate(t_stack **stack)
+{
+	t_stack	*first_elm;
+	t_stack	*tmp;
+
+	first_elm = malloc(sizeof(t_stack));
+	if (*stack)
+	{
+		tmp = *stack;
+		free(tmp);
+		first_elm->num = (*stack)->num;
+		first_elm->next = NULL;
+		tmp = (*stack)->next;
+		ft_lstadd_back2(&tmp, first_elm);
+		*stack = tmp;
+	}
+	else
+		free(first_elm);
 }

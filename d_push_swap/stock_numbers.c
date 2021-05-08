@@ -6,11 +6,11 @@
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:38:00 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/05/07 17:14:37 by nbjaghou         ###   ########.fr       */
+/*   Updated: 2021/05/07 17:23:44 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 char	*join_numbers(t_checker *checker, char *str, int i)
 {
@@ -61,5 +61,4 @@ void	stock_numbers(t_checker *checker)
 	}
 	tmp->next = NULL;
 	free_tab(tab);
-	ft_free(tmp);
 }

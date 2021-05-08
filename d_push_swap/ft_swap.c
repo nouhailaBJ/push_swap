@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 16:54:45 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/05/06 17:20:33 by nbjaghou         ###   ########.fr       */
+/*   Created: 2021/04/26 16:55:27 by nbjaghou          #+#    #+#             */
+/*   Updated: 2021/05/04 15:03:28 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-void	ft_push(t_stack **dest, t_stack **src)
+void	ft_swap(t_stack **stack)
 {
-	t_stack	*tmp;
+	int	tmp;
 
-	if (*src)
+	if (*stack && (*stack)->next)
 	{
-		tmp = *src;
-		*src = (*src)->next;
-		tmp->next = *dest;
-		*dest = tmp;
+		tmp = (*stack)->num;
+		(*stack)->num = (*stack)->next->num;
+		(*stack)->next->num = tmp;
 	}
 }

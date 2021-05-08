@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   ft_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 16:54:45 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/05/06 17:20:33 by nbjaghou         ###   ########.fr       */
+/*   Created: 2021/05/03 14:11:29 by nbjaghou          #+#    #+#             */
+/*   Updated: 2021/05/04 16:46:19 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-void	ft_push(t_stack **dest, t_stack **src)
+int	ft_sorted(t_stack *a, t_stack *b)
 {
+	int		error;
 	t_stack	*tmp;
 
-	if (*src)
+	if (!a || b)
+		return (0);
+	tmp = a;
+	while (tmp && tmp->next)
 	{
-		tmp = *src;
-		*src = (*src)->next;
-		tmp->next = *dest;
-		*dest = tmp;
+		if (tmp->num > tmp->next->num)
+			return (0);
+		tmp = tmp->next;
 	}
+	return (1);
 }

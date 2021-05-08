@@ -6,11 +6,11 @@
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 15:37:53 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/05/06 15:44:26 by nbjaghou         ###   ########.fr       */
+/*   Updated: 2021/05/05 13:18:54 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 static int	atoi_spaces(const char *s)
 {

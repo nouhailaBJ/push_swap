@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   get_max.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 16:54:45 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/05/06 17:20:33 by nbjaghou         ###   ########.fr       */
+/*   Created: 2021/05/04 15:51:26 by nbjaghou          #+#    #+#             */
+/*   Updated: 2021/05/04 15:53:22 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-void	ft_push(t_stack **dest, t_stack **src)
+int	get_max(t_stack *b)
 {
+	int		max;
 	t_stack	*tmp;
 
-	if (*src)
+	max = 0;
+	tmp = NULL;
+	if (b)
 	{
-		tmp = *src;
-		*src = (*src)->next;
-		tmp->next = *dest;
-		*dest = tmp;
+		max = b->num;
+		tmp = b;
+		while (b)
+		{
+			if (b->num >= max)
+				max = b->num;
+			b = b->next;
+		}
+		b = tmp;
 	}
+	return (max);
 }

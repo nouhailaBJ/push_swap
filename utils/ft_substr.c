@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 16:54:45 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/05/06 17:20:33 by nbjaghou         ###   ########.fr       */
+/*   Created: 2019/10/11 13:08:45 by nbjaghou          #+#    #+#             */
+/*   Updated: 2021/05/07 17:35:42 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "utils.h"
 
-void	ft_push(t_stack **dest, t_stack **src)
+char	*ft_substr(char const *s, unsigned int start, int len)
 {
-	t_stack	*tmp;
+	char	*str;
+	size_t	i;
 
-	if (*src)
+	i = 0;
+	if (s == NULL)
+		return (NULL);
+	str = (char *)malloc(sizeof(char) * len + 1);
+	if (str == 0)
+		return (NULL);
+	if (start > (unsigned int)ft_strlen(s))
+		return (ft_strdup(""));
+	while (s[start + i] != '\0' && len--)
 	{
-		tmp = *src;
-		*src = (*src)->next;
-		tmp->next = *dest;
-		*dest = tmp;
+		str[i] = s[start + i];
+		i++;
 	}
+	str[i] = '\0';
+	return (str);
 }

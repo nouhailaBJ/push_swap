@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 16:54:45 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/05/06 17:20:33 by nbjaghou         ###   ########.fr       */
+/*   Created: 2021/04/26 17:04:22 by nbjaghou          #+#    #+#             */
+/*   Updated: 2021/05/05 13:08:54 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-void	ft_push(t_stack **dest, t_stack **src)
+void	ft_free(t_stack **stack)
 {
 	t_stack	*tmp;
 
-	if (*src)
+	if (*stack)
 	{
-		tmp = *src;
-		*src = (*src)->next;
-		tmp->next = *dest;
-		*dest = tmp;
+		while (*stack)
+		{
+			tmp = (*stack)->next;
+			free(*stack);
+			*stack = NULL;
+			(*stack) = tmp;
+		}
+		free(*stack);
+		*stack = NULL;
 	}
+}
+
+void	free_all(t_checker *checker)
+{
+	ft_free(&checker->a);
+	ft_free(&checker->b);
 }

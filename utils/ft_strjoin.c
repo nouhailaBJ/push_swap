@@ -6,23 +6,13 @@
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/11 13:34:13 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/04/28 16:18:57 by nbjaghou         ###   ########.fr       */
+/*   Updated: 2021/05/07 17:17:16 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-static int	len_str(char const *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
 	int		i;
@@ -30,8 +20,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	str = malloc(len_str(s1) + len_str(s2) + 1);
-	if (str == NULL)
+	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (str == 0)
 		return (NULL);
 	while (s1[j] != '\0')
 	{
@@ -45,5 +35,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	str[j] = '\0';
+	free(s1);
 	return (str);
 }

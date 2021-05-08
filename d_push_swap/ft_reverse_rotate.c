@@ -6,11 +6,11 @@
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/26 16:54:11 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/05/06 17:25:37 by nbjaghou         ###   ########.fr       */
+/*   Updated: 2021/05/06 17:21:25 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 void	del_last(t_stack **stack)
 {
@@ -46,7 +46,7 @@ void	ft_reverse_rotate(t_stack **stack)
 		new->num = tmp->num;
 		new->next = *stack;
 		*stack = new;
-		free(tmp);
+		ft_free(&tmp);
 		del_last(stack);
 	}
 	else

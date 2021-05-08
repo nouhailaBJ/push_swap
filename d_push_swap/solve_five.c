@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   solve_five.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nbjaghou <nbjaghou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/26 16:54:45 by nbjaghou          #+#    #+#             */
-/*   Updated: 2021/05/06 17:20:33 by nbjaghou         ###   ########.fr       */
+/*   Created: 2021/05/04 16:37:40 by nbjaghou          #+#    #+#             */
+/*   Updated: 2021/05/04 17:07:16 by nbjaghou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
-void	ft_push(t_stack **dest, t_stack **src)
+void	solve_five(t_stack **list_a, t_stack **list_b)
 {
-	t_stack	*tmp;
+	int		size;
 
-	if (*src)
+	size = find_size(*list_a);
+	if (is_sort(*list_a))
+		return ;
+	if (size > 3)
+		push_b(size, list_a, list_b);
+	solve_three(list_a, list_b);
+	if (size > 3)
 	{
-		tmp = *src;
-		*src = (*src)->next;
-		tmp->next = *dest;
-		*dest = tmp;
+		ft_push(list_a, list_b);
+		write(1, "pa\n", 3);
+		ft_push(list_a, list_b);
+		write(1, "pa\n", 3);
 	}
 }
